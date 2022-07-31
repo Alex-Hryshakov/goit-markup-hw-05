@@ -13,6 +13,7 @@
   --thirty-bcg: #ffffff;
   --primary-icon-color: #afb1b8;
   --accent-color: #2196f3;
+  --transition-dur-tf: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -142,11 +143,27 @@ body {
 }
 
 .menu-link {
+  position: relative;
   padding: 32px 0;
+  margin-bottom: 28px;
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--primary-text-color);
+  transition: color var(--transition-dur-tf);
+}
+
+.menu-link-current::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
 .contact-link-icon {
@@ -165,11 +182,13 @@ body {
   display: flex;
   align-items: center;
   font-style: normal;
+  padding: 32px 0;
   font-weight: 500;
   font-size: var(--secondary-font-size);
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
+  transition: color var(--transition-dur-tf);
 }
 
 .contact-text:hover,
@@ -218,6 +237,7 @@ body {
   line-height: 1.88;
   letter-spacing: 0.06em;
   color: var(--thirty-text-color);
+  transition: background-color var(--transition-dur-tf);
 }
 
 .modal-btn:hover,
@@ -272,8 +292,29 @@ body {
   display: flex;
 }
 
+.examples-img {
+  position: relative;
+}
+
 .examples-img:not(:last-child) {
   margin-right: 30px;
+}
+
+.examples-title {
+  font-size: var(--secondary-font-size);
+  font-weight: var(--primary-font-weight);
+  line-height: 1.14;
+  text-transform: uppercase;
+  color: var(--thirty-text-color);
+}
+
+.examples-title-wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(47, 48, 58, 0.8);
+  padding: 27px 0;
+  text-align: center;
 }
 
 /*=========================================== TEAM ===========================================*/
@@ -334,6 +375,7 @@ body {
 
 .social-list-icon {
   fill: var(--primary-icon-color);
+  transition: fill var(--transition-dur-tf);
 }
 
 .social-list-link {
@@ -344,6 +386,7 @@ body {
   height: 44px;
   border-radius: 50%;
   background-color: var(--thirty-bcg);
+  transition: background-color var(--transition-dur-tf);
 }
 
 .social-list-link:hover,
@@ -364,6 +407,7 @@ body {
 
 .clients-list-icon {
   fill: var(--primary-icon-color);
+  transition: fill var(--transition-dur-tf);
 }
 
 .clients-list-link:hover .clients-list-icon,
@@ -381,6 +425,7 @@ body {
 
   border: 1px solid var(--primary-icon-color);
   border-radius: 4px;
+  transition: border var(--transition-dur-tf);
 }
 
 .clients-list-link:hover,
@@ -440,6 +485,12 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
+  transition: color var(--transition-dur-tf);
+}
+
+.contact-text-footer:hover,
+.contact-text-footer:focus {
+  color: var(--accent-color);
 }
 
 .footer-join {
@@ -466,6 +517,7 @@ body {
   height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
+  transition: background-color var(--transition-dur-tf);
 }
 
 .social-list-link-dark-theme:hover,
@@ -487,14 +539,18 @@ body {
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
+.btn-portfolio:not(:last-child) {
+  margin-right: 8px;
+}
+
+.btn-portfolio {
+  transition: box-shadow var(--transition-dur-tf), background-color var(--transition-dur-tf);
+}
+
 .nav-on-portfolio-list {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
-}
-
-.btn-portfolio:not(:last-child) {
-  margin-right: 8px;
 }
 
 .nav-on-portfolio-text.current {
@@ -514,6 +570,7 @@ body {
   line-height: 1.62;
   text-align: center;
   color: var(--primary-text-color);
+  transition: color var(--transition-dur-tf);
 }
 
 .portfolio-img-text {
@@ -528,6 +585,18 @@ body {
 
 .portfolio-examles-links {
   display: block;
+
+  transition: box-shadow var(--transition-dur-tf);
+}
+
+.portfolio-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-examles-links:hover .overlay,
+.portfolio-examles-links:focus .overlay {
+  transform: translate(0, 0);
 }
 
 .portfolio-examles-links:hover,
@@ -536,15 +605,27 @@ body {
     1px 4px 6px rgb(0 0 0 / 16%);
 }
 
-/* .portfolio-examples-item:hover {
-  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%), 0px 4px 4px rgb(0 0 0 / 6%),
-    1px 4px 6px rgb(0 0 0 / 16%);
-} */
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 63px 24px;
+  overflow: hidden;
+  transform: translate(0, 100%);
+  transition: var(--transition-dur-tf);
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--thirty-text-color);
+  background-color: rgba(33, 150, 243, 0.9);
+}
 
 .portfolio-examples-list {
   display: flex;
   gap: 30px;
-
   flex-wrap: wrap;
 }
 
@@ -561,6 +642,67 @@ body {
   font-size: var(--primary-font-size);
   line-height: 1.88;
   color: var(--secondary-text-color);
+}
+
+/* =====================================MODAL WINDOW ===================================== */
+
+.backdrop-modal {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  transition: var(--transition-dur-tf);
+}
+
+.backdrop-modal.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop-modal.is-hidden .modal-wind {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.modal-wind {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 528px;
+  height: 581px;
+
+  background: var(--thirty-bcg);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transform: translate(-50%, -50%) scale(1.1);
+  transition: var(--transition-dur-tf);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  padding: 0;
+}
+
+.modal-wind-icon:hover,
+.modal-wind-icon:focus {
+  fill: var(--accent-color);
 }
 
 .menu-link-current {
