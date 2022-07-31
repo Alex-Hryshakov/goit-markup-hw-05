@@ -655,7 +655,8 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 
-  transition: var(--transition-dur-tf);
+  opacity: 1;
+  transition: opacity var(--transition-dur-tf), visibility var(--transition-dur-tf);
 }
 
 .backdrop-modal.is-hidden {
@@ -681,7 +682,7 @@ body {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1);
   transition: var(--transition-dur-tf);
 }
 
